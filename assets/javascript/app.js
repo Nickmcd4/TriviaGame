@@ -2,17 +2,19 @@
 var time = 15;
 var questions = {
     question1: ["In our solar system, which planet has the shortest day?"],
-    answers1: [{a:"Earth",
-                b:"Jupiter",
-                c:"Saturn",
-                d:"Mars"
-               }],
     question2: ["Which is the closest star to our sun?"],
-    answers2: [{a:"Canopus",
-                b:"Thursuys",
-                c:"Sirius",
-                d:"Alpha Centauri"
-              }]
+};
+var answers ={
+    answers1:[{1:"Earth",
+               2:"Jupiter",
+               3:"Saturn",
+               4:"Mars"
+    }],
+    answers2:[{1:"Canopus",
+               2:"Thursuys",
+               3:"Sirius",
+               4:"Alpha Centauri"
+    }]
 };
 var questionsAsked = 0;
 var correctAnswers;
@@ -30,16 +32,17 @@ function gamePlay (){
         console.log("Working");
         //Remove the start button upon clicking
         $(".startButton").hide();
-        $(".btnContainer").css({"top": "50%", "font-size": "30px", "left": "35%"});
+       // $(".btnContainer").css({"top": "50%", "font-size": "30px", "left": "35%"});
         timeCount();
         firstQuestion();
+        answerCheck();
     });
 }
 
 function timeCount(){ //absolute state of timer
     time = 15;
     interval = setInterval(timer,1000);
-    $(".btnContainer").append("<div>" + "Time Remaining: " + "<span class='timer'" + "</span>" + "</div>" + "<br>" + "<div class='questionSlot'></div>" + "<br>");
+    $(".btnContainer").append("<div class='remainingTime'>" + "Time Remaining: " + "<span class='timer'" + "</span>" + "</div>");
 }
 
 //Add time remaining to created timer div and stop timer/reset once it reaches 0
@@ -62,13 +65,13 @@ function displayAnswer (){
     if (questionsAsked === 1) {
 
         var showAnswer = $("<div class='theAnswer'>");
-        correctAnswer = showAnswer.text("You've run out of time. " + "The correct answer is " + questions.answers1[0].b);
+        correctAnswer = showAnswer.text("You've run out of time. " + "The correct answer is " + answers.answers1[0][2]);
 
         $(".btnContainer").append(correctAnswer);
 
         setTimeout(function(){
             $('div').remove('.theAnswer');
-            $('div').remove(".timer");
+            $('div').remove(".remainingTime");
             timeCount();
             secondQuestion();
         }, 5000);
@@ -77,13 +80,13 @@ function displayAnswer (){
 
 function firstQuestion() {
     questionsAsked++;
-    $(".questionSlot").append("<div class='hmm'>" + questions.question1 + "</div>");
+    $(".btnContainer").append("<div class='hmm'>" + questions.question1 + "</div>");
 
     //add buttons with answers
-    $(".btnContainer").append('<button class="buttonAns" value=0>' + questions.answers1[0].a + '</button>');
-    $(".btnContainer").append('<button class="buttonAns" value=1>' + questions.answers1[0].b + '</button>');
-    $(".btnContainer").append('<button class="buttonAns" value=0>' + questions.answers1[0].c + '</button>');
-    $(".btnContainer").append('<button class="buttonAns" value=0>' + questions.answers1[0].d + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][1] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers1[0][2] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][3] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][4] + '</button>');
     answerCheck();
     
     
@@ -91,13 +94,13 @@ function firstQuestion() {
 
 function secondQuestion() {
     questionsAsked++;
-    $(".questionSlot").append("<div class='hmm'>" + questions.question2 + "</div>");
+    $(".btnContainer").append("<div class='hmm'>" + questions.question2 + "</div>");
 
     //add buttons with answers
-    $(".btnContainer").append('<button class="buttonAns" value=0>' + questions.answers2[0].a + '</button>');
-    $(".btnContainer").append('<button class="buttonAns" value=0>' + questions.answers2[0].b + '</button>');
-    $(".btnContainer").append('<button class="buttonAns" value=0>' + questions.answers2[0].c + '</button>');
-    $(".btnContainer").append('<button class="buttonAns" value=1>' + questions.answers2[0].d + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][1] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][2] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][3] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers2[0][4] + '</button>');
     answerCheck();
     
     
