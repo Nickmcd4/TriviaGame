@@ -1,0 +1,68 @@
+.main {
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+
+.title {
+    text-align: center;
+    font-size: 75px;
+}
+
+.btnContainer{
+   position: fixed;
+   top: 70%;
+   left: 50%;
+   margin: -100px 0px 0px -100px;
+   text-align:center;
+}
+.startButton {
+  border-radius: 4px;
+  background-color: skyblue;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  position:relative;
+  top: 50%;
+  transform: translateY(-50%); 
+  
+  
+}
+
+.startButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.startButton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.startButton:hover span {
+  padding-right: 25px;
+}
+
+.startButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
