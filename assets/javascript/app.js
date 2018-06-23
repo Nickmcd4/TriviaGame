@@ -1,5 +1,5 @@
 // Setting Global Variables
-var time = 15;
+var time = 16;
 var questions = {
     question1: ["In our solar system, which planet has the shortest day?"],
     question2: ["Which is the closest star to our sun?"],
@@ -56,7 +56,7 @@ function gamePlay (){
 }
 
 function timeCount(){ //absolute state of timer
-    time = 15;
+    time = 16;
     interval = setInterval(timer,1000);
     $(".btnContainer").append("<div class='remainingTime'>" + "Time Remaining: " + "<span class='timer'" + "</span>" + "</div>");
 }
@@ -390,6 +390,10 @@ function answerCheck (){
     });
 
 }
+
+$(document).ready(function(){
+    $(".hide").hide();
+});
 
 //Main
 gamePlay();
