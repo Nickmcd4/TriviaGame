@@ -39,14 +39,10 @@ var answers ={
 var questionsAsked = 0;
 var correctAnswers=0;
 var wrongAnswers=0;
-var intervalID; 
+var interval; 
+var isCorrect = false;
 
 //Functions
-
-function startGame(){
-
-}
-
 function gamePlay (){
     $(".startButton").on('click', function(){
         console.log("Working");
@@ -75,6 +71,7 @@ function timer() {
             clearInterval(interval);
             $('button').remove();
             $('.questionInput').remove();
+            $('.btnContainer').append('<div class="timeIsUp">Time is Up!</div>');
             displayAnswer();
         }
     
@@ -82,26 +79,199 @@ function timer() {
     
 }
 function displayAnswer (){
-    if (questionsAsked === 1) {
 
+    //FIRST QUESTION STATEMENTS
+    if (questionsAsked === 1 && isCorrect===false) {
+        wrongAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
-        correctAnswer = showAnswer.text("You've run out of time. " + "The correct answer is " + answers.answers1[0][2]);
-
+        
+        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers1[0][2]);
+    
         $(".btnContainer").append(correctAnswer);
 
         setTimeout(function(){
             $('div').remove('.theAnswer');
             $('div').remove(".remainingTime");
+            $('div').remove('.timeIsUp');
             timeCount();
             secondQuestion();
             answerCheck();
         }, 5000);
     }
-    else if (questionsAsked ===2){
+    else if (questionsAsked ===1 && isCorrect===true){
+        //tracks right answers
+        correctAnswers++;
+        //display correct!!
         var showAnswer = $("<div class='theAnswer'>");
-               correctAnswer = showAnswer.text("You've run out of time. " + "The correct answer is " + answers.answers2[0][4]);
-
+               correctAnswer = showAnswer.text("CORRECT!!!");
         $(".btnContainer").append(correctAnswer);
+
+        //removes correct answer after 5 seconds
+        //removes time remaining then calls the time remaining function to rest
+        setTimeout(function(){
+            isCorrect = false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            timeCount();
+            secondQuestion();
+            answerCheck();
+
+        }, 3000);
+    }
+
+    //SECOND QUESTION STATEMENTS
+    else if (questionsAsked ===2 && isCorrect === false){
+        wrongAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers2[0][4]);
+        $(".btnContainer").append(correctAnswer);
+
+
+        setTimeout(function(){
+            isCorrect = false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            timeCount();
+            thirdQuestion();
+            answerCheck();
+
+            
+        }, 2000);
+    }
+    else if(questionsAsked===2 && isCorrect===true){
+        correctAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+               correctAnswer = showAnswer.text("Correct!!!");
+        $(".btnContainer").append(correctAnswer);
+
+        setTimeout(function(){
+            isCorrect=false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+
+            timeCount();
+            thirdQuestion();
+            answerCheck();
+            
+        }, 2000)
+    }
+    //THIRD QUESTION STATEMENTS
+    else if (questionsAsked ===3 && isCorrect === false){
+        wrongAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers3[0][1]);
+        $(".btnContainer").append(correctAnswer);
+
+
+        setTimeout(function(){
+            isCorrect = false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            timeCount();
+            fourthQuestion();
+            answerCheck();
+
+            
+        }, 2000);
+    }
+    else if(questionsAsked===3 && isCorrect===true){
+        correctAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+               correctAnswer = showAnswer.text("Correct!!!");
+        $(".btnContainer").append(correctAnswer);
+
+        setTimeout(function(){
+            isCorrect=false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            timeCount();
+            fourthQuestion();
+            answerCheck();
+            
+        }, 2000)
+    }
+    //FOURTH QUESTION STATEMENTS
+    else if (questionsAsked ===4 && isCorrect === false){
+        wrongAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers4[0][1]);
+        $(".btnContainer").append(correctAnswer);
+
+
+        setTimeout(function(){
+            isCorrect = false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            timeCount();
+            fifthQuestion();
+            answerCheck();
+
+            
+        }, 2000);
+    }
+    else if(questionsAsked===4 && isCorrect===true){
+        correctAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+               correctAnswer = showAnswer.text("Correct!!!");
+        $(".btnContainer").append(correctAnswer);
+
+        setTimeout(function(){
+            isCorrect=false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            timeCount();
+            fifthQuestion();
+            answerCheck();
+            
+        }, 2000)
+    }
+    //FIFTH QUESTION STATEMENTS
+    else if (questionsAsked ===5 && isCorrect === false){
+        wrongAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers5[0][2]);
+        $(".btnContainer").append(correctAnswer);
+
+
+        setTimeout(function(){
+            isCorrect = false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+
+
+        endGame();  
+        }, 2000);
+    }
+    else if(questionsAsked===5 && isCorrect===true){
+        correctAnswers++;
+        var showAnswer = $("<div class='theAnswer'>");
+               correctAnswer = showAnswer.text("Correct!!!");
+        $(".btnContainer").append(correctAnswer);
+
+        setTimeout(function(){
+            isCorrect=false;
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+            endGame();
+        }, 2000)
     }
 }
 
@@ -114,7 +284,7 @@ function firstQuestion() {
     $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers1[0][2] + '</button>');
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][3] + '</button>');
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][4] + '</button>');
-    answerCheck();
+    
     
     
 }
@@ -128,11 +298,72 @@ function secondQuestion() {
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][2] + '</button>');
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][3] + '</button>');
     $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers2[0][4] + '</button>');
-    answerCheck();
+    
+    
+    
+}
+function thirdQuestion() {
+    questionsAsked++;
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question3 + "</div>");
+
+    //add buttons with answers
+    $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers3[0][1] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers3[0][2] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers3[0][3] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers3[0][4] + '</button>');
+    
+    
+    
+}
+function fourthQuestion() {
+    questionsAsked++;
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question4 + "</div>");
+
+    //add buttons with answers
+    $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers4[0][1] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers4[0][2] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers4[0][3] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers4[0][4] + '</button>');
+    
+    
+    
+}
+function fifthQuestion() {
+    questionsAsked++;
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question5 + "</div>");
+
+    //add buttons with answers
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers5[0][1] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers5[0][2] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers5[0][3] + '</button>');
+    $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers5[0][4] + '</button>');
+    
     
     
 }
 
+function endGame (){
+    $(".btnContainer").append("<div class='gameOver'>All done, heres how you did</div>" + "<div class='gameOver'>Correct:" + correctAnswers + "</div>" + "<div class='gameOver'>Incorrect:" + wrongAnswers + "</div>");
+    resetGame();
+}
+function resetGame(){
+    $(".btnContainer").append('<button class="reset">Play Again!</button>');
+    $('.reset').on('click', function(){
+        $('div').remove('.gameOver');
+        $('button').remove('.reset');
+
+        //reset variables
+        questionsAsked=0;
+        correctAnswers=0;
+        wrongAnswers=0;
+        isCorrect=false;
+
+        //functions
+        timeCount();
+        firstQuestion();
+        answerCheck();
+    })
+}
 function answerCheck (){
     $('button').on('click', function(){
         var correctChoice = $(this).attr("value");
@@ -140,9 +371,14 @@ function answerCheck (){
         clearInterval(interval);
 
         if(correctChoice == 1){
-            console.log("Correct!");
-            $("button").remove();
+            isCorrect = true;
+
+            console.log("correct");
+
+            $('button').remove();
+
             $(".questionInput").remove();
+            displayAnswer();
         }
 
         else{
@@ -157,5 +393,4 @@ function answerCheck (){
 
 //Main
 gamePlay();
-
 
