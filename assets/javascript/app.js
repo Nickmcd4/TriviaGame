@@ -3,22 +3,42 @@ var time = 15;
 var questions = {
     question1: ["In our solar system, which planet has the shortest day?"],
     question2: ["Which is the closest star to our sun?"],
+    question3: ["Which NASA space flight was the last manned mission to the moon?"],
+    question4: ["What flavor ice cream did Baskin-Robbins release in 1969 to commemorate America’s landing on the moon?"],
+    question5: ["Who was the first person to reach space?"]
 };
 var answers ={
     answers1:[{1:"Earth",
-               2:"Jupiter",
+               2:"Jupiter", //correct answer
                3:"Saturn",
                4:"Mars"
     }],
     answers2:[{1:"Canopus",
                2:"Thursuys",
                3:"Sirius",
-               4:"Alpha Centauri"
+               4:"Alpha Centauri" //corect answer
+    }],
+    answers3:[{1:"Apollo 17", //correct answer
+               2:"USS Voyager",
+               3:"Apollo 13",
+               4:"Sputnik 1"
+
+    }],
+    answers4:[{1:"Lunar Cheesecake", //correct answer
+               2:"Out of this Swirled",
+               3:"Ne-apollo-tan",
+               4:"Crater Crunch"
+
+    }],
+    answers5:[{1:"Neil Armstrong",
+               2:"Yuri Gagarin", //correct answer
+               3:"David Bowman",
+               4:"Buzz Aldrin"
     }]
 };
 var questionsAsked = 0;
-var correctAnswers;
-var wrongAnswers;
+var correctAnswers=0;
+var wrongAnswers=0;
 var intervalID; 
 
 //Functions
@@ -54,7 +74,7 @@ function timer() {
         if(time===0){
             clearInterval(interval);
             $('button').remove();
-            $('.hmm').remove();
+            $('.questionInput').remove();
             displayAnswer();
         }
     
@@ -74,13 +94,20 @@ function displayAnswer (){
             $('div').remove(".remainingTime");
             timeCount();
             secondQuestion();
+            answerCheck();
         }, 5000);
+    }
+    else if (questionsAsked ===2){
+        var showAnswer = $("<div class='theAnswer'>");
+               correctAnswer = showAnswer.text("You've run out of time. " + "The correct answer is " + answers.answers2[0][4]);
+
+        $(".btnContainer").append(correctAnswer);
     }
 }
 
 function firstQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='hmm'>" + questions.question1 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question1 + "</div>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][1] + '</button>');
@@ -94,7 +121,7 @@ function firstQuestion() {
 
 function secondQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='hmm'>" + questions.question2 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question2 + "</div>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][1] + '</button>');
@@ -115,13 +142,14 @@ function answerCheck (){
         if(correctChoice == 1){
             console.log("Correct!");
             $("button").remove();
-            $(".hmm").remove();
+            $(".questionInput").remove();
         }
 
         else{
             console.log("incorrect");
             $("button").remove();
-            $(".hmm").remove();
+            $(".questionInput").remove();
+            displayAnswer();
         }
     });
 
