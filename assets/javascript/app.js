@@ -60,7 +60,7 @@ function gamePlay (){
 function timeCount(){ //absolute state of timer
     time = 16;
     interval = setInterval(timer,1000);
-    $(".btnContainer").append("<div class='remainingTime'>" + "Time Remaining: " + "<span class='timer'" + "</span>" + "</div>");
+    $(".btnContainer").append("<div class='remainingTime'>" + "Time Remaining: " + "<span class='timer'" + "</span>" + "</div>" + "<br><br><br>");
 }
 
 //Add time remaining to created timer div and stop timer/reset once it reaches 0
@@ -90,6 +90,7 @@ function displayAnswer (){
         correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers1[0][2]);
     
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
         setTimeout(function(){
             handofOdin();
@@ -105,6 +106,7 @@ function displayAnswer (){
         var showAnswer = $("<div class='theAnswer'>");
                correctAnswer = showAnswer.text("CORRECT!!!");
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
         //removes correct answer after 5 seconds
         //removes time remaining then calls the time remaining function to rest
@@ -115,7 +117,7 @@ function displayAnswer (){
             secondQuestion();
             answerCheck();
 
-        }, 3000);
+        }, 5000);
     }
 
     //SECOND QUESTION STATEMENTS
@@ -124,6 +126,7 @@ function displayAnswer (){
         var showAnswer = $("<div class='theAnswer'>");
         correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers2[0][4]);
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
 
         setTimeout(function(){
@@ -134,13 +137,14 @@ function displayAnswer (){
             answerCheck();
 
             
-        }, 2000);
+        }, 5000);
     }
     else if(questionsAsked===2 && isCorrect===true){
         correctAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
                correctAnswer = showAnswer.text("Correct!!!");
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
         setTimeout(function(){
             isCorrect=false;
@@ -149,7 +153,7 @@ function displayAnswer (){
             thirdQuestion();
             answerCheck();
             
-        }, 2000)
+        }, 5000)
     }
     //THIRD QUESTION STATEMENTS
     else if (questionsAsked ===3 && isCorrect === false){
@@ -157,6 +161,7 @@ function displayAnswer (){
         var showAnswer = $("<div class='theAnswer'>");
         correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers3[0][1]);
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
 
         setTimeout(function(){
@@ -167,13 +172,14 @@ function displayAnswer (){
             answerCheck();
 
             
-        }, 2000);
+        }, 5000);
     }
     else if(questionsAsked===3 && isCorrect===true){
         correctAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
                correctAnswer = showAnswer.text("Correct!!!");
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
         setTimeout(function(){
             isCorrect=false;
@@ -190,6 +196,7 @@ function displayAnswer (){
         var showAnswer = $("<div class='theAnswer'>");
         correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers4[0][1]);
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
 
         setTimeout(function(){
@@ -200,13 +207,14 @@ function displayAnswer (){
             answerCheck();
 
             
-        }, 2000);
+        }, 5000);
     }
     else if(questionsAsked===4 && isCorrect===true){
         correctAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
                correctAnswer = showAnswer.text("Correct!!!");
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
         setTimeout(function(){
             isCorrect=false;
@@ -215,7 +223,7 @@ function displayAnswer (){
             fifthQuestion();
             answerCheck();
             
-        }, 2000)
+        }, 5000)
     }
     //FIFTH QUESTION STATEMENTS
     else if (questionsAsked ===5 && isCorrect === false){
@@ -223,6 +231,7 @@ function displayAnswer (){
         var showAnswer = $("<div class='theAnswer'>");
         correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers5[0][2]);
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
 
         setTimeout(function(){
@@ -231,25 +240,26 @@ function displayAnswer (){
 
 
         endGame();  
-        }, 2000);
+        }, 5000);
     }
     else if(questionsAsked===5 && isCorrect===true){
         correctAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
                correctAnswer = showAnswer.text("Correct!!!");
         $(".btnContainer").append(correctAnswer);
+        $('div').remove(".remainingTime");
 
         setTimeout(function(){
             isCorrect=false;
             handofOdin();
             endGame();
-        }, 2000)
+        }, 5000)
     }
 }
 
 function firstQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='questionInput'>" + questions.question1 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question1 + "</div>" + "<br>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers1[0][1] + '</button>');
@@ -263,7 +273,7 @@ function firstQuestion() {
 
 function secondQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='questionInput'>" + questions.question2 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question2 + "</div>" + "<br>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers2[0][1] + '</button>');
@@ -276,7 +286,7 @@ function secondQuestion() {
 }
 function thirdQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='questionInput'>" + questions.question3 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question3 + "</div>" + "<br>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers3[0][1] + '</button>');
@@ -289,7 +299,7 @@ function thirdQuestion() {
 }
 function fourthQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='questionInput'>" + questions.question4 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question4 + "</div>" + "<br>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=1>' + answers.answers4[0][1] + '</button>');
@@ -302,7 +312,7 @@ function fourthQuestion() {
 }
 function fifthQuestion() {
     questionsAsked++;
-    $(".btnContainer").append("<div class='questionInput'>" + questions.question5 + "</div>");
+    $(".btnContainer").append("<div class='questionInput'>" + questions.question5 + "</div>" + "<br>");
 
     //add buttons with answers
     $(".btnContainer").append('<button class="buttonAns" value=0>' + answers.answers5[0][1] + '</button>');
@@ -315,7 +325,7 @@ function fifthQuestion() {
 }
 
 function endGame (){
-    $(".btnContainer").append("<div class='gameOver'>All done, heres how you did</div>" + "<div class='gameOver'>Correct:" + correctAnswers + "</div>" + "<div class='gameOver'>Incorrect:" + wrongAnswers + "</div>");
+    $(".btnContainer").append("<div class='gameOver'>All done, heres how you did</div>" + "<br>" + "<div class='gameOver'>Correct:" + correctAnswers + "</div>" + "<br>" + "<div class='gameOver'>Incorrect:" + wrongAnswers + "</div>" + "<br>");
     resetGame();
 }
 function resetGame(){
@@ -367,6 +377,7 @@ function handofOdin() {
             $('span').remove(".timer");
             $('div').remove(".timeIsUp");
             $('div').remove(".remainingTime");
+            $('br').remove();
 }
 
 //Main
