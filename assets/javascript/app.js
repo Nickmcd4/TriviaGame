@@ -21,7 +21,7 @@ var answers ={
     answers3:[{1:"Apollo 17", //correct answer
                2:"USS Voyager",
                3:"Apollo 13",
-               4:"Sputnik 1"
+               4:"Sputnik"
 
     }],
     answers4:[{1:"Lunar Cheesecake", //correct answer
@@ -36,6 +36,8 @@ var answers ={
                4:"Buzz Aldrin"
     }]
 };
+
+//counters
 var questionsAsked = 0;
 var correctAnswers=0;
 var wrongAnswers=0;
@@ -90,9 +92,7 @@ function displayAnswer (){
         $(".btnContainer").append(correctAnswer);
 
         setTimeout(function(){
-            $('div').remove('.theAnswer');
-            $('div').remove(".remainingTime");
-            $('div').remove('.timeIsUp');
+            handofOdin();
             timeCount();
             secondQuestion();
             answerCheck();
@@ -110,10 +110,7 @@ function displayAnswer (){
         //removes time remaining then calls the time remaining function to rest
         setTimeout(function(){
             isCorrect = false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             timeCount();
             secondQuestion();
             answerCheck();
@@ -131,10 +128,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect = false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             timeCount();
             thirdQuestion();
             answerCheck();
@@ -150,11 +144,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect=false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
-
+            handofOdin();
             timeCount();
             thirdQuestion();
             answerCheck();
@@ -171,10 +161,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect = false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             timeCount();
             fourthQuestion();
             answerCheck();
@@ -190,10 +177,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect=false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             timeCount();
             fourthQuestion();
             answerCheck();
@@ -210,10 +194,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect = false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             timeCount();
             fifthQuestion();
             answerCheck();
@@ -229,10 +210,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect=false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             timeCount();
             fifthQuestion();
             answerCheck();
@@ -249,10 +227,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect = false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
 
 
         endGame();  
@@ -266,10 +241,7 @@ function displayAnswer (){
 
         setTimeout(function(){
             isCorrect=false;
-            $('div').remove(".theAnswer");
-            $('span').remove(".timer");
-            $('div').remove(".timeIsUp");
-            $('div').remove(".remainingTime");
+            handofOdin();
             endGame();
         }, 2000)
     }
@@ -390,10 +362,12 @@ function answerCheck (){
     });
 
 }
-
-$(document).ready(function(){
-    $(".hide").hide();
-});
+function handofOdin() {
+            $('div').remove(".theAnswer");
+            $('span').remove(".timer");
+            $('div').remove(".timeIsUp");
+            $('div').remove(".remainingTime");
+}
 
 //Main
 gamePlay();
