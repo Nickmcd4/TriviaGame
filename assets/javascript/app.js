@@ -87,7 +87,7 @@ function displayAnswer (){
         wrongAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
         
-        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers1[0][2]);
+        correctAnswer = showAnswer.append("Better luck next time! The correct answer was: " + "<div class ='answerYo'>" + answers.answers1[0][2] + "</div>");
     
         $(".btnContainer").append(correctAnswer);
         $('div').remove(".remainingTime");
@@ -124,7 +124,7 @@ function displayAnswer (){
     else if (questionsAsked ===2 && isCorrect === false){
         wrongAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
-        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers2[0][4]);
+        correctAnswer = showAnswer.append("Better luck next time! The correct answer was: " + "<div class ='answerYo'>" + answers.answers2[0][4] + "</div>");
         $(".btnContainer").append(correctAnswer);
         $('div').remove(".remainingTime");
 
@@ -159,7 +159,7 @@ function displayAnswer (){
     else if (questionsAsked ===3 && isCorrect === false){
         wrongAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
-        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers3[0][1]);
+        correctAnswer = showAnswer.append("Better luck next time! The correct answer was: " +  "<div class ='answerYo'>" +  answers.answers3[0][1] + "</div>");
         $(".btnContainer").append(correctAnswer);
         $('div').remove(".remainingTime");
 
@@ -194,7 +194,7 @@ function displayAnswer (){
     else if (questionsAsked ===4 && isCorrect === false){
         wrongAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
-        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers4[0][1]);
+        correctAnswer = showAnswer.append("Better luck next time! The correct answer was: " + "<div class ='answerYo'>" + answers.answers4[0][1] + "</div>");
         $(".btnContainer").append(correctAnswer);
         $('div').remove(".remainingTime");
 
@@ -229,7 +229,7 @@ function displayAnswer (){
     else if (questionsAsked ===5 && isCorrect === false){
         wrongAnswers++;
         var showAnswer = $("<div class='theAnswer'>");
-        correctAnswer = showAnswer.text("Better luck next time! The correct answer was: " + answers.answers5[0][2]);
+        correctAnswer = showAnswer.append("Better luck next time! The correct answer was: " + "<div class ='answerYo'>" + answers.answers5[0][2] + "</div>");
         $(".btnContainer").append(correctAnswer);
         $('div').remove(".remainingTime");
 
@@ -378,7 +378,9 @@ function handofOdin() {
             $('div').remove(".timeIsUp");
             $('div').remove(".remainingTime");
             $('br').remove();
+            $('div').remove(".answerYo");
 }
+
 
 //Main
 gamePlay();
